@@ -1,0 +1,20 @@
+{
+    "sign_in" : "Đăng nhập",
+    "sign_up": "Bạn là người mới ? Đăng ký ngay",
+    "term_of_service": {
+        "auth": "Điều khoản dịch vụ",
+        "signIn": "Điều khoản Dịch vụ"
+    },
+    "privacy_policy": {
+        "auth": "Chính sách bảo mật",
+        "signIn": "Chính sách Bảo mật"
+    },
+    "footer": {
+        "signIn": "Tôi đồng ý với ",
+        "auth": "Bằng việc đăng ký hoặc đăng nhập, bạn đã đồng ý với các "
+    },
+    "and" : {
+        "auth": " và ",
+        "signIn": " & "
+    }
+}

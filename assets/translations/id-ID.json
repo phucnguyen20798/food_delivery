@@ -1,0 +1,20 @@
+{
+    "sign_in" : "Gabung",
+    "sign_up": "Sebagai pemula? Daftar sekarang",
+    "term_of_service": {
+        "auth": "Persyaratan layanan",
+        "signIn": "Persyaratan layanan"
+    },
+    "privacy_policy": {
+        "auth": "Kebijakan pribadi",
+        "signIn": "Kebijakan pribadi",
+    },
+    "footer": {
+        "auth": "Dengan mendaftar atau masuk, Anda menyetujui ",
+        "signIn": "Dengan mendaftar atau masuk, Anda menyetujui ",
+    },
+    "and" : {
+        "auth": " dan ",
+        "signIn": "&"
+    }
+}

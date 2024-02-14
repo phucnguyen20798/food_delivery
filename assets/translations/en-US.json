@@ -1,0 +1,20 @@
+{
+    "sign_in" : "Log in",
+    "sign_up": "Are you a new person here ? Register now",
+    "term_of_service": {
+        "auth": "Terms of service",
+        "signIn": "Terms of Service"
+    },
+    "privacy_policy": {
+        "auth": "Privacy policy",
+        "signIn": "Privacy Policy"
+    },
+    "footer": {
+        "auth": "By registering or logging in, you agree to the ",
+        "sigIn": "I agree with "
+    },
+    "and" : {
+        "auth": " and ",
+        "signIn": "&"
+    }
+}
