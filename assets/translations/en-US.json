@@ -11,10 +11,27 @@
     },
     "footer": {
         "auth": "By registering or logging in, you agree to the ",
-        "sigIn": "I agree with "
+        "signIn": "I agree with "
     },
     "and" : {
         "auth": " and ",
-        "signIn": "&"
+        "signIn": " & "
+    },
+    "continue": "Continue",
+    "phoneNumber": {
+        "label": "Phone number",
+        "hint": "Enter your phone number"
+    },
+    "signInTitle": "Login to the application",
+    "signInDesc": "Log in or create an account in just a few simple steps",
+    "change_language": {
+        "title": "Change language",
+        "subtitle": "Which language do you want to use?"
+    },
+    "use": "Use",
+    "food_delivery": "Deliver food to your door",
+    "share_voucher": {
+        "title": "Share promotional codes with friends",
+        "desc": "With friends, you can easily share promotional codes with each other to enjoy the fun together."
     }
 }

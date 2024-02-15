@@ -1,5 +1,5 @@
 {
-    "sign_in" : "Gabung",
+    "sign_in": "Gabung",
     "sign_up": "Sebagai pemula? Daftar sekarang",
     "term_of_service": {
         "auth": "Persyaratan layanan",
@@ -7,14 +7,31 @@
     },
     "privacy_policy": {
         "auth": "Kebijakan pribadi",
-        "signIn": "Kebijakan pribadi",
+        "signIn": "Kebijakan pribadi"
     },
     "footer": {
         "auth": "Dengan mendaftar atau masuk, Anda menyetujui ",
-        "signIn": "Dengan mendaftar atau masuk, Anda menyetujui ",
+        "signIn": "Dengan mendaftar atau masuk, Anda menyetujui "
     },
-    "and" : {
+    "and": {
         "auth": " dan ",
-        "signIn": "&"
+        "signIn": " & "
+    },
+    "continue": "Melanjutkan",
+    "phoneNumber": {
+        "label": "Nomor telepon",
+        "hint": "Masukkan nomor telepon Anda"
+    },
+    "signInTitle": "Masuk ke aplikasi",
+    "signInDesc": "Masuk atau buat akun hanya dalam beberapa langkah sederhana",
+    "change_language": {
+        "title": "Ganti BAHASA",
+        "subtitle": "Bahasa apa yang ingin Anda gunakan?"
+    },
+    "use": "Menggunakan",
+    "food_delivery": "Antarkan makanan ke pintu Anda",
+    "share_voucher": {
+        "title": "Bagikan kode promosi dengan teman",
+        "desc": "Dengan teman, Anda dapat dengan mudah berbagi kode promosi satu sama lain untuk menikmati kesenangan bersama."
     }
 }

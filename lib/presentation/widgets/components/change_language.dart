@@ -1,15 +1,18 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
-import 'package:food_delivery/main.dart';
+import 'package:food_delivery/presentation/utils/app_utils.dart';
 import 'package:food_delivery/presentation/utils/text_utils.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../utils/bottomsheet_utils.dart';
 
 class ChangeLanguage extends StatefulWidget {
+  final String? title;
   final Function(Locale) onClick;
 
   const ChangeLanguage({
     super.key,
+    this.title,
     required this.onClick,
   });
 
@@ -22,7 +25,7 @@ class _ChangeLanguageState extends State<ChangeLanguage> {
 
   @override
   void initState() {
-   language = getLanguage();
+    language = AppUtils.getLanguage();
     super.initState();
   }
 
@@ -47,7 +50,8 @@ class _ChangeLanguageState extends State<ChangeLanguage> {
       hoverColor: Colors.transparent,
       focusColor: Colors.transparent,
       child: Container(
-        margin: const EdgeInsets.only(top: 8.0, bottom: 8.0, right: 12.0, left: 8.0),
+        margin: const EdgeInsets.only(
+            top: 8.0, bottom: 8.0, right: 12.0, left: 8.0),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(100.0),
           border: Border.all(color: Colors.grey.shade300, width: 1.0),
@@ -75,8 +79,14 @@ class _ChangeLanguageState extends State<ChangeLanguage> {
     );
   }
 
-  String getLanguage() {
-    final prefs = getIt.get<SharedPreferences>();
-    return prefs.getString('language') ?? 'Tiếng Việt';
+  @override
+  void didUpdateWidget(covariant ChangeLanguage oldWidget) {
+    if (oldWidget.title != widget.title && widget.title != null) {
+      setState(() {
+        log('Title: ${widget.title}');
+        language = widget.title!;
+      });
+    }
+    super.didUpdateWidget(oldWidget);
   }
 }

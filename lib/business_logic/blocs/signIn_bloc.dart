@@ -5,6 +5,13 @@ import '../events/signIn_event.dart';
 
 class SignInBloc extends Bloc<SignInEvent, SignInState> {
 
-  SignInBloc() : super(InitSignInState());
+  SignInBloc() : super(InitSignInState()) {
+    on(_onChangeLanguage);
+  }
+
+  void _onChangeLanguage(
+      ChangeLanguageEvent event, Emitter<SignInState> emitter) {
+    emitter(ChangeLanguageState(event.locale));
+  }
 
 }

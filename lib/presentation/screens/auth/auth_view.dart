@@ -5,26 +5,36 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_delivery/business_logic/blocs/auth_bloc.dart';
 import 'package:food_delivery/business_logic/events/auth_event.dart';
 import 'package:food_delivery/business_logic/states/auth_state.dart';
-import 'package:food_delivery/main.dart';
-import 'package:food_delivery/presentation/utils/text_utils.dart';
+import 'package:food_delivery/presentation/utils/app_utils.dart';
 import 'package:food_delivery/presentation/widgets/components/general_button.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import '../../../data/models/slide.dart';
 import '../../widgets/components/change_language.dart';
 
-class AuthView extends StatelessWidget {
+class AuthView extends StatefulWidget {
   const AuthView({super.key});
 
   @override
+  State<AuthView> createState() => _AuthViewState();
+}
+
+class _AuthViewState extends State<AuthView> {
+
+  PageController pageController = PageController();
+  String? languageTitle;
+  List<Slide> slideList = [];
+
+  @override
   Widget build(BuildContext context) {
-    PageController pageController = PageController();
     return BlocBuilder<AuthBloc, AuthState>(builder: (context, state) {
-      if (state is ChangeLanguageState) {
+      if (state is InitAuthState) {
+        slideList = state.slides;
+      } else if (state is ChangeLanguageState) {
         EasyLocalization.of(context)?.setLocale(state.locale);
-        final prefs = getIt.get<SharedPreferences>();
-        prefs.setString(
-            'language', TextUtils.getLanguageFromLocale(state.locale));
+        AppUtils.saveLanguage(state.locale);
+      } else if (state is ReloadUIScreenState) {
+        languageTitle = state.language;
       }
       return Scaffold(
         backgroundColor: Colors.white,
@@ -41,9 +51,12 @@ class AuthView extends StatelessWidget {
             ),
           ),
           actions: [
-            ChangeLanguage(onClick: (locale) {
-              context.read<AuthBloc>().add(ChangeLanguageEvent(locale));
-            })
+            ChangeLanguage(
+              title: languageTitle,
+              onClick: (locale) {
+                context.read<AuthBloc>().add(ChangeLanguageEvent(locale));
+              },
+            )
           ],
         ),
         body: Padding(
@@ -53,12 +66,31 @@ class AuthView extends StatelessWidget {
             children: [
               Expanded(
                 child: PageView.builder(
+                    itemCount: slideList.length,
                     controller: pageController,
-                    itemBuilder: (context, index) => const Column(
+                    itemBuilder: (context, index) => Column(
+                          mainAxisSize: MainAxisSize.min,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text('Phục vụ 24/24 cho mọi khách hàng'),
+                            Image.asset(slideList[index].image),
+                            const SizedBox(height: 24.0),
+                            Text(slideList[index].title.tr(),
+                                style: const TextStyle(
+                                  fontSize: 18.0,
+                                  color: Colors.black,
+                                )),
+                            slideList[index].desc != null
+                                ? Padding(
+                                    padding: const EdgeInsets.only(top: 8.0),
+                                    child: Text(slideList[index].desc!.tr(),
+                                        textAlign: TextAlign.center,
+                                        style: const TextStyle(
+                                          fontSize: 14.0,
+                                          color: Colors.black,
+                                        )),
+                                  )
+                                : const SizedBox(),
                           ],
                         )),
               ),
@@ -77,8 +109,16 @@ class AuthView extends StatelessWidget {
                   content: 'sign_in'.tr(),
                   backgroundColor: Colors.green.shade700,
                   textColor: Colors.white,
-                  onClick: () {
-                    Navigator.pushNamed(context, '/sign_in');
+                  onClick: () async {
+                    final language =
+                        await Navigator.pushNamed(context, '/sign_in')
+                            as String?;
+                    if (language != null) {
+                      // ignore: use_build_context_synchronously
+                      context
+                          .read<AuthBloc>()
+                          .add(ReloadUIScreenEvent(language));
+                    }
                   }),
               const SizedBox(height: 12.0),
               GeneralButton(
