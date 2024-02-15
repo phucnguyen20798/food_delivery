@@ -3,12 +3,8 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_delivery/business_logic/blocs/auth_bloc.dart';
-import 'package:food_delivery/business_logic/events/auth_event.dart';
 import 'package:food_delivery/business_logic/states/auth_state.dart';
-import 'package:food_delivery/main.dart';
-import 'package:food_delivery/presentation/utils/text_utils.dart';
 import 'package:food_delivery/presentation/widgets/components/general_button.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../widgets/components/change_language.dart';
@@ -20,12 +16,6 @@ class AuthView extends StatelessWidget {
   Widget build(BuildContext context) {
     PageController pageController = PageController();
     return BlocBuilder<AuthBloc, AuthState>(builder: (context, state) {
-      if (state is ChangeLanguageState) {
-        EasyLocalization.of(context)?.setLocale(state.locale);
-        final prefs = getIt.get<SharedPreferences>();
-        prefs.setString(
-            'language', TextUtils.getLanguageFromLocale(state.locale));
-      }
       return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
@@ -40,11 +30,7 @@ class AuthView extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          actions: [
-            ChangeLanguage(onClick: (locale) {
-              context.read<AuthBloc>().add(ChangeLanguageEvent(locale));
-            })
-          ],
+          actions: const [ChangeLanguage()],
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12.0),

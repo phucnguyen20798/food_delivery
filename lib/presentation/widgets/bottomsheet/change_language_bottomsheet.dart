@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery/presentation/widgets/components/general_button.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -58,18 +59,18 @@ class _ChangeLanguageBottomSheetState extends State<ChangeLanguageBottomSheet> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Thay đổi ngôn ngữ',
-                style: TextStyle(
+              Text(
+                'change_language.title'.tr(),
+                style: const TextStyle(
                   fontSize: 18.0,
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               const SizedBox(height: 8.0),
-              const Text(
-                'Bạn muốn sử dụng ngôn ngữ nào ?',
-                style: TextStyle(
+              Text(
+                'change_language.subtitle'.tr(),
+                style: const TextStyle(
                   fontSize: 16.0,
                   color: Colors.black,
                 ),
@@ -139,7 +140,7 @@ class _ChangeLanguageBottomSheetState extends State<ChangeLanguageBottomSheet> {
               ),
               const SizedBox(height: 24.0),
               GeneralButton(
-                  content: 'Sử dụng $language',
+                  content: '${'use'.tr()} $language',
                   backgroundColor: Colors.green.shade700,
                   textColor: Colors.white,
                   onClick: () {

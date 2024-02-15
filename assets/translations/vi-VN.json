@@ -16,5 +16,17 @@
     "and" : {
         "auth": " và ",
         "signIn": " & "
-    }
+    },
+    "continue": "Tiếp tục",
+    "phoneNumber": {
+        "label": "Số điện thoại",
+        "hint": "Nhập số điện thoại của bạn"
+    },
+    "signInTitle": "Đăng nhập ứng dụng",
+    "signInDesc": "Đăng nhập hoặc tạo tài khoản chỉ với vài bước đơn giản",
+    "change_language": {
+        "title": "Thay đổi ngôn ngữ",
+        "subtitle": "Bạn muốn sử dụng ngôn ngữ nào ?"
+    },
+    "use": "Sử dụng"
 }

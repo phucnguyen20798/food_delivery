@@ -5,6 +5,9 @@ import '../events/signIn_event.dart';
 
 class SignInBloc extends Bloc<SignInEvent, SignInState> {
 
-  SignInBloc() : super(InitSignInState());
+  SignInBloc() : super(InitSignInState()) {
+    
+  }
+
 
 }

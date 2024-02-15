@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery/main.dart';
 import 'package:food_delivery/presentation/utils/text_utils.dart';
@@ -6,12 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../utils/bottomsheet_utils.dart';
 
 class ChangeLanguage extends StatefulWidget {
-  final Function(Locale) onClick;
-
-  const ChangeLanguage({
-    super.key,
-    required this.onClick,
-  });
+  const ChangeLanguage({super.key});
 
   @override
   State<ChangeLanguage> createState() => _ChangeLanguageState();
@@ -22,7 +18,7 @@ class _ChangeLanguageState extends State<ChangeLanguage> {
 
   @override
   void initState() {
-   language = getLanguage();
+    language = getLanguage();
     super.initState();
   }
 
@@ -38,7 +34,8 @@ class _ChangeLanguageState extends State<ChangeLanguage> {
                 String languageCode = TextUtils.getLanguageCode(chooseLanguage);
                 String countryCode = TextUtils.getCountryCode(chooseLanguage);
                 Locale locale = Locale(languageCode, countryCode);
-                widget.onClick(locale);
+                EasyLocalization.of(context)?.setLocale(locale);
+                saveLanguage(locale);
               });
             });
       },
@@ -47,7 +44,8 @@ class _ChangeLanguageState extends State<ChangeLanguage> {
       hoverColor: Colors.transparent,
       focusColor: Colors.transparent,
       child: Container(
-        margin: const EdgeInsets.only(top: 8.0, bottom: 8.0, right: 12.0, left: 8.0),
+        margin: const EdgeInsets.only(
+            top: 8.0, bottom: 8.0, right: 12.0, left: 8.0),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(100.0),
           border: Border.all(color: Colors.grey.shade300, width: 1.0),
@@ -78,5 +76,10 @@ class _ChangeLanguageState extends State<ChangeLanguage> {
   String getLanguage() {
     final prefs = getIt.get<SharedPreferences>();
     return prefs.getString('language') ?? 'Tiếng Việt';
+  }
+
+  void saveLanguage(Locale locale) {
+    final prefs = getIt.get<SharedPreferences>();
+    prefs.setString('language', TextUtils.getLanguageFromLocale(locale));
   }
 }
