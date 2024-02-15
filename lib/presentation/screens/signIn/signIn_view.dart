@@ -11,12 +11,14 @@ import 'package:food_delivery/presentation/utils/app_utils.dart';
 import 'package:food_delivery/presentation/widgets/components/change_language.dart';
 import 'package:food_delivery/presentation/widgets/components/general_button.dart';
 
+TextEditingController phoneNumberController = TextEditingController();
+String? language;
+
 class SignInView extends StatelessWidget {
   const SignInView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    String? language;
     return BlocBuilder<SignInBloc, SignInState>(builder: (context, state) {
       if (state is ChangeLanguageState) {
         EasyLocalization.of(context)?.setLocale(state.locale);
@@ -78,6 +80,7 @@ class SignInView extends StatelessWidget {
               ),
               const SizedBox(height: 12.0),
               TextFormField(
+                controller: phoneNumberController,
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
                   labelText: 'phoneNumber.label'.tr(),
@@ -103,7 +106,12 @@ class SignInView extends StatelessWidget {
                   content: 'continue'.tr(),
                   backgroundColor: Colors.green.shade700,
                   textColor: Colors.white,
-                  onClick: () {}),
+                  onClick: () {
+                    if (phoneNumberController.text.isNotEmpty) {
+                      Navigator.pushNamed(context, '/verify_otp',
+                          arguments: phoneNumberController.text);
+                    }
+                  }),
               const SizedBox(height: 12.0),
               RichText(
                   text: TextSpan(

@@ -43,6 +43,7 @@ dependencies:
   easy_localization:
   shared_preferences: ^2.2.2
   get_it: ^7.6.7
+  pinput: ^4.0.0
 
   firebase_auth: ^4.17.4
   firebase_database: ^10.4.5
