@@ -1,13 +1,20 @@
-import 'package:easy_localization/easy_localization.dart';
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
-import 'package:food_delivery/main.dart';
+import 'package:food_delivery/presentation/utils/app_utils.dart';
 import 'package:food_delivery/presentation/utils/text_utils.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../utils/bottomsheet_utils.dart';
 
 class ChangeLanguage extends StatefulWidget {
-  const ChangeLanguage({super.key});
+  final String? title;
+  final Function(Locale) onClick;
+
+  const ChangeLanguage({
+    super.key,
+    this.title,
+    required this.onClick,
+  });
 
   @override
   State<ChangeLanguage> createState() => _ChangeLanguageState();
@@ -18,7 +25,7 @@ class _ChangeLanguageState extends State<ChangeLanguage> {
 
   @override
   void initState() {
-    language = getLanguage();
+    language = AppUtils.getLanguage();
     super.initState();
   }
 
@@ -34,8 +41,7 @@ class _ChangeLanguageState extends State<ChangeLanguage> {
                 String languageCode = TextUtils.getLanguageCode(chooseLanguage);
                 String countryCode = TextUtils.getCountryCode(chooseLanguage);
                 Locale locale = Locale(languageCode, countryCode);
-                EasyLocalization.of(context)?.setLocale(locale);
-                saveLanguage(locale);
+                widget.onClick(locale);
               });
             });
       },
@@ -73,13 +79,14 @@ class _ChangeLanguageState extends State<ChangeLanguage> {
     );
   }
 
-  String getLanguage() {
-    final prefs = getIt.get<SharedPreferences>();
-    return prefs.getString('language') ?? 'Tiếng Việt';
-  }
-
-  void saveLanguage(Locale locale) {
-    final prefs = getIt.get<SharedPreferences>();
-    prefs.setString('language', TextUtils.getLanguageFromLocale(locale));
+  @override
+  void didUpdateWidget(covariant ChangeLanguage oldWidget) {
+    if (oldWidget.title != widget.title && widget.title != null) {
+      setState(() {
+        log('Title: ${widget.title}');
+        language = widget.title!;
+      });
+    }
+    super.didUpdateWidget(oldWidget);
   }
 }

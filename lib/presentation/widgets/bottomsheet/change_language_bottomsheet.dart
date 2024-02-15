@@ -1,9 +1,10 @@
+import 'dart:developer';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery/presentation/widgets/components/general_button.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../../main.dart';
+import '../../utils/app_utils.dart';
 
 class ChangeLanguageBottomSheet extends StatefulWidget {
   const ChangeLanguageBottomSheet({super.key});
@@ -18,7 +19,7 @@ class _ChangeLanguageBottomSheetState extends State<ChangeLanguageBottomSheet> {
 
   @override
   void initState() {
-    language = getLanguage();
+    language = AppUtils.getLanguage();
     super.initState();
   }
 
@@ -144,6 +145,7 @@ class _ChangeLanguageBottomSheetState extends State<ChangeLanguageBottomSheet> {
                   backgroundColor: Colors.green.shade700,
                   textColor: Colors.white,
                   onClick: () {
+                    log('Language: $language');
                     Navigator.pop(context, language);
                   })
             ],
@@ -151,10 +153,5 @@ class _ChangeLanguageBottomSheetState extends State<ChangeLanguageBottomSheet> {
         ),
       ],
     );
-  }
-
-  String getLanguage() {
-    final prefs = getIt.get<SharedPreferences>();
-    return prefs.getString('language') ?? 'Tiếng Việt';
   }
 }

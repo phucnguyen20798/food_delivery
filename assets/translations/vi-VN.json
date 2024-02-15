@@ -28,5 +28,10 @@
         "title": "Thay đổi ngôn ngữ",
         "subtitle": "Bạn muốn sử dụng ngôn ngữ nào ?"
     },
-    "use": "Sử dụng"
+    "use": "Sử dụng",
+    "food_delivery": "Giao đồ ăn đến tận nơi cho bạn",
+    "share_voucher": {
+        "title": "Chia sẻ mã khuyến mãi với bạn bè",
+        "desc": "Với bạn bè, bạn dễ dàng chia sẻ cho nhau mã khuyến mãi để cùng tận hưởng niềm vui."
+    }
 }

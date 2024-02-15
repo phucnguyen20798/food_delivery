@@ -28,5 +28,10 @@
         "title": "Ganti BAHASA",
         "subtitle": "Bahasa apa yang ingin Anda gunakan?"
     },
-    "use": "Menggunakan"
+    "use": "Menggunakan",
+    "food_delivery": "Antarkan makanan ke pintu Anda",
+    "share_voucher": {
+        "title": "Bagikan kode promosi dengan teman",
+        "desc": "Dengan teman, Anda dapat dengan mudah berbagi kode promosi satu sama lain untuk menikmati kesenangan bersama."
+    }
 }

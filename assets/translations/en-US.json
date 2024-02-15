@@ -28,5 +28,10 @@
         "title": "Change language",
         "subtitle": "Which language do you want to use?"
     },
-    "use": "Use"
+    "use": "Use",
+    "food_delivery": "Deliver food to your door",
+    "share_voucher": {
+        "title": "Share promotional codes with friends",
+        "desc": "With friends, you can easily share promotional codes with each other to enjoy the fun together."
+    }
 }

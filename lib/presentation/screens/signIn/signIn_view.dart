@@ -1,23 +1,29 @@
+import 'dart:developer';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_delivery/business_logic/blocs/signIn_bloc.dart';
+import 'package:food_delivery/business_logic/events/signIn_event.dart';
 import 'package:food_delivery/business_logic/states/signIn_state.dart';
+import 'package:food_delivery/presentation/utils/app_utils.dart';
 import 'package:food_delivery/presentation/widgets/components/change_language.dart';
 import 'package:food_delivery/presentation/widgets/components/general_button.dart';
 
-class SignInView extends StatefulWidget {
+class SignInView extends StatelessWidget {
   const SignInView({super.key});
 
   @override
-  State<SignInView> createState() => _SignInViewState();
-}
-
-class _SignInViewState extends State<SignInView> {
-  @override
   Widget build(BuildContext context) {
+    String? language;
     return BlocBuilder<SignInBloc, SignInState>(builder: (context, state) {
+      if (state is ChangeLanguageState) {
+        EasyLocalization.of(context)?.setLocale(state.locale);
+        AppUtils.saveLanguage(state.locale);
+        language = AppUtils.getLanguage();
+        log('Language Sign In: $language');
+      }
       return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
@@ -25,7 +31,7 @@ class _SignInViewState extends State<SignInView> {
           elevation: 0.0,
           leading: IconButton(
             onPressed: () {
-              Navigator.pop(context);
+              Navigator.pop(context, language);
             },
             icon: const Icon(
               Icons.arrow_back,
@@ -40,7 +46,11 @@ class _SignInViewState extends State<SignInView> {
                 color: Colors.black,
               ),
             ),
-            const ChangeLanguage()
+            ChangeLanguage(
+              onClick: (locale) {
+                context.read<SignInBloc>().add(ChangeLanguageEvent(locale));
+              },
+            )
           ],
         ),
         body: Padding(
