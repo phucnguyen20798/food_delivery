@@ -39,4 +39,13 @@ class TextUtils {
         return 'Tiếng Việt';
     }
   }
+
+  static String? validatePhoneNumber(String? phone) {
+    if (phone == null) {
+      return 'Số điện thoại không được để trống';
+    } else if (phone.length != 10 || phone.length != 11) {
+      return 'Số điện thoại không hợp lệ';
+    }
+    return null;
+  }
 }

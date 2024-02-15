@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:food_delivery/data/providers/food_delivery_api.dart';
 import 'package:food_delivery/presentation/widgets/components/change_language.dart';
 import 'package:food_delivery/presentation/widgets/components/general_button.dart';
 
@@ -83,13 +83,8 @@ class SignInView extends StatelessWidget {
                 content: 'Tiếp tục',
                 backgroundColor: Colors.green.shade700,
                 textColor: Colors.white,
-                onClick: () {
-                  FoodDeliveryAPI api = FoodDeliveryAPI();
-                  api.signInPhoneNumber(
-                    '+84392634700',
-                    () {},
-                    (error) {},
-                  );
+                onClick: () async {
+
                 }),
             const SizedBox(height: 12.0),
             RichText(
