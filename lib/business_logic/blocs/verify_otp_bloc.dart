@@ -15,14 +15,14 @@ class VerifyOTPBloc extends Bloc<VerifyOTPEvent, VerifyOTPState> {
   }
 
   void _onInit(InitVerifyOTPEvent event, Emitter<VerifyOTPState> emitter) {
-    // repository.verifyPhoneNumberWithOTP(
-    //     phone: TextUtils.getPhoneNumber(event.phone),
-    //     verificationCompleted: (authCredential) {
-    //       emitter(InitVerifyOTPState(authCredential.smsCode));
-    //     },
-    //     onFailure: (error) {},
-    //     codeSent: (verificationID, resendToken) {},
-    //     codeAutoRetrievalTimeout: (timeOut) {});
+    repository.verifyPhoneNumberWithOTP(
+        phone: TextUtils.getPhoneNumber(event.phone),
+        verificationCompleted: (authCredential) {
+          emitter(InitVerifyOTPState(authCredential.smsCode));
+        },
+        onFailure: (error) {},
+        codeSent: (verificationID, resendToken) {},
+        codeAutoRetrievalTimeout: (timeOut) {});
   }
 
   void _onResendOTP(ResendOTPEvent event, Emitter<VerifyOTPState> emitter) {

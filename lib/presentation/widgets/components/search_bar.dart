@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/presentation/constants/app_color.dart';
-import 'package:pinput/pinput.dart';
 
 class SearchBar extends StatelessWidget {
   const SearchBar({super.key});
