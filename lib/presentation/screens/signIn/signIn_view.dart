@@ -159,10 +159,10 @@ class SignInView extends StatelessWidget {
       },
       listener: (BuildContext context, SignInState state) {
         if (state is ValidatePhoneNumberState) {
-          message == null;
-          phoneNumberController.clear();
           Navigator.pushNamed(context, AppConstant.verifyOTP,
               arguments: phoneNumberController.text);
+          phoneNumberController.clear();
+          message == null;
         }
       },
     );
