@@ -11,6 +11,7 @@ import 'package:food_delivery/presentation/widgets/components/general_button.dar
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../data/models/slide.dart';
+import '../../constants/app_color.dart';
 import '../../widgets/components/change_language.dart';
 
 class AuthView extends StatefulWidget {
@@ -46,7 +47,7 @@ class _AuthViewState extends State<AuthView> {
             'Food Delivery'.toUpperCase(),
             style: TextStyle(
               fontSize: 18.0,
-              color: Colors.green.shade700,
+              color: AppColor.primaryColor,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -101,13 +102,13 @@ class _AuthViewState extends State<AuthView> {
                     dotColor: Colors.grey.shade300,
                     dotHeight: 8.0,
                     dotWidth: 8.0,
-                    activeDotColor: Colors.green.shade700,
+                    activeDotColor: AppColor.primaryColor,
                   ), // your preferred effect
                   onDotClicked: (index) {}),
               const SizedBox(height: 24.0),
               GeneralButton(
                   content: 'sign_in'.tr(),
-                  backgroundColor: Colors.green.shade700,
+                  backgroundColor: AppColor.primaryColor,
                   textColor: Colors.white,
                   onClick: () async {
                     final language =
@@ -123,8 +124,8 @@ class _AuthViewState extends State<AuthView> {
               const SizedBox(height: 12.0),
               GeneralButton(
                   content: 'sign_up'.tr(),
-                  backgroundColor: Colors.white,
-                  textColor: Colors.green.shade700,
+                  backgroundColor: AppColor.backgroundColor,
+                  textColor: AppColor.primaryColor,
                   isOutlineBorder: true,
                   onClick: () {
                     Navigator.pushNamed(context, AppConstant.signUp);

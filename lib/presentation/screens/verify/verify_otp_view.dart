@@ -170,7 +170,7 @@ class VerifyOTPView extends StatelessWidget {
         );
       },
       listener: (BuildContext context, VerifyOTPState state) {
-        Navigator.pushNamed(context, AppConstant.inputInfor);
+        Navigator.pushNamed(context, AppConstant.home);
       },
     );
   }
