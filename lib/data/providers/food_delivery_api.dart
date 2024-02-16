@@ -7,12 +7,10 @@ import 'package:flutter/foundation.dart';
 import 'package:food_delivery/data/models/account.dart';
 import 'package:food_delivery/presentation/constants/app_constant.dart';
 
-abstract class FoodDeliveryAPI {
+class FoodDeliveryAPI {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final DatabaseReference _dbRef =
       FirebaseDatabase.instance.refFromURL(AppConstant.dbUrl);
-
-  FoodDeliveryAPI();
 
   Future<void> verifyPhone({
     required String phone,
@@ -54,7 +52,8 @@ abstract class FoodDeliveryAPI {
     _dbRef.child('accounts').child(account.id).set(account.toJson());
   }
 
-  Future<void> updateAccountToDB(String idAccount, Map<String, Object?> value) async {
+  Future<void> updateAccountToDB(
+      String idAccount, Map<String, Object?> value) async {
     _dbRef.child('accounts').child(idAccount).update(value);
   }
 

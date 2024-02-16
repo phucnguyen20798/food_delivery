@@ -8,10 +8,12 @@ abstract class VerifyOTPState extends Equatable {
 class EmptyState extends VerifyOTPState {}
 
 class InitVerifyOTPState extends VerifyOTPState {
-  final String phone;
+  final String? code;
 
-  InitVerifyOTPState(this.phone);
+  InitVerifyOTPState(this.code);
 
   @override
-  List<Object?> get props => [phone];
+  List<Object?> get props => [code];
 }
+
+class VerifyOTPCompleteState extends VerifyOTPState {}

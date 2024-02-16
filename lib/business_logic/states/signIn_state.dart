@@ -16,3 +16,14 @@ class ChangeLanguageState extends SignInState {
   @override
   List<Object?> get props => [locale];
 }
+
+class ValidatePhoneNumberState extends SignInState {}
+
+class ValidatePhoneNumberFailureState extends SignInState {
+  final String message;
+
+  ValidatePhoneNumberFailureState(this.message);
+
+  @override
+  List<Object?> get props => [message];
+}

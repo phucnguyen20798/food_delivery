@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_delivery/business_logic/blocs/auth_bloc.dart';
 import 'package:food_delivery/business_logic/events/auth_event.dart';
 import 'package:food_delivery/business_logic/states/auth_state.dart';
+import 'package:food_delivery/presentation/constants/app_constant.dart';
 import 'package:food_delivery/presentation/utils/app_utils.dart';
 import 'package:food_delivery/presentation/widgets/components/general_button.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -20,7 +21,6 @@ class AuthView extends StatefulWidget {
 }
 
 class _AuthViewState extends State<AuthView> {
-
   PageController pageController = PageController();
   String? languageTitle;
   List<Slide> slideList = [];
@@ -111,7 +111,7 @@ class _AuthViewState extends State<AuthView> {
                   textColor: Colors.white,
                   onClick: () async {
                     final language =
-                        await Navigator.pushNamed(context, '/sign_in')
+                        await Navigator.pushNamed(context, AppConstant.signIn)
                             as String?;
                     if (language != null) {
                       // ignore: use_build_context_synchronously
@@ -127,7 +127,7 @@ class _AuthViewState extends State<AuthView> {
                   textColor: Colors.green.shade700,
                   isOutlineBorder: true,
                   onClick: () {
-                    Navigator.pushNamed(context, '/sign_up');
+                    Navigator.pushNamed(context, AppConstant.signUp);
                   }),
               const SizedBox(height: 16.0),
               RichText(

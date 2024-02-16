@@ -16,7 +16,7 @@ class VerifyOTPScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => VerifyOTPBloc()..add(InitVerifyOTPEvent(phone)),
-      child: const VerifyOTPView(),
+      child: VerifyOTPView(phoneNumber: phone),
     );
   }
 }

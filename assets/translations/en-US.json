@@ -33,5 +33,11 @@
     "share_voucher": {
         "title": "Share promotional codes with friends",
         "desc": "With friends, you can easily share promotional codes with each other to enjoy the fun together."
-    }
+    },
+    "verify_otp": {
+        "title": "Verify OTP",
+        "desc": "We sent a 6-digit verification code to the phone number "
+    },
+    "resend_otp": "Resend OTP",
+    "didnot_receive_otp": "You didn't receive OTP?"
 }

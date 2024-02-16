@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery/main.dart';
+import 'package:food_delivery/di.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'text_utils.dart';
