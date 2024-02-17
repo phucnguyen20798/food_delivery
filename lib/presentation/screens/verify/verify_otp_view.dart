@@ -1,14 +1,16 @@
 import 'dart:developer';
 
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
 import 'package:food_delivery/business_logic/blocs/verify_otp_bloc.dart';
 import 'package:food_delivery/business_logic/events/verify_otp_event.dart';
 import 'package:food_delivery/business_logic/states/verify_otp_state.dart';
 import 'package:food_delivery/presentation/constants/app_constant.dart';
 import 'package:pinput/pinput.dart';
+
+bool isCountDown = false;
 
 class VerifyOTPView extends StatelessWidget {
   final String phoneNumber;
@@ -25,6 +27,10 @@ class VerifyOTPView extends StatelessWidget {
         String? otpPhoneCode;
         if (state is InitVerifyOTPState) {
           otpPhoneCode = state.code;
+        } else if (state is StartTimeCountDownState) {
+          isCountDown = true;
+        } else if (state is EndTimeCountDownState) {
+          isCountDown = false;
         }
         return Scaffold(
           backgroundColor: Colors.white,
@@ -138,31 +144,67 @@ class VerifyOTPView extends StatelessWidget {
                 ),
                 const SizedBox(height: 32.0),
                 Center(
-                  child: RichText(
-                      textAlign: TextAlign.center,
-                      text: TextSpan(
-                          text: 'didnot_receive_otp'.tr(),
-                          style: const TextStyle(
-                            fontSize: 14.0,
-                            color: Colors.black,
-                          ),
-                          children: [
-                            TextSpan(
-                              text: 'resend_otp'.tr(),
-                              recognizer: TapGestureRecognizer()
-                                ..onTap = () {
-                                  context
-                                      .read<VerifyOTPBloc>()
-                                      .add(ResendOTPEvent(phoneNumber));
-                                },
-                              style: TextStyle(
-                                fontSize: 14.0,
-                                decoration: TextDecoration.underline,
-                                color: Colors.green.shade700,
-                                fontWeight: FontWeight.bold,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        'didnot_receive_otp'.tr(),
+                        style: const TextStyle(
+                          fontSize: 14.0,
+                          color: Colors.black,
+                        ),
+                      ),
+                      isCountDown == true
+                          ? Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  'resend'.tr(),
+                                  style: const TextStyle(
+                                    fontSize: 14.0,
+                                    color: Colors.grey,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                TimerCountdown(
+                                  enableDescriptions: false,
+                                  spacerWidth: 4.0,
+                                  timeTextStyle: const TextStyle(
+                                    fontSize: 14.0,
+                                    color: Colors.grey,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  format: CountDownTimerFormat.minutesSeconds,
+                                  endTime: DateTime.now()
+                                      .add(const Duration(seconds: 120)),
+                                  onEnd: () {
+                                    context
+                                        .read<VerifyOTPBloc>()
+                                        .add(EndTimeCountDownEvent());
+                                  },
+                                ),
+                              ],
+                            )
+                          : InkWell(
+                              onTap: () {
+                                context
+                                    .read<VerifyOTPBloc>()
+                                    .add(ResendOTPEvent(phoneNumber));
+                              },
+                              child: Text(
+                                'resend_otp'.tr(),
+                                style: TextStyle(
+                                  fontSize: 14.0,
+                                  decoration: TextDecoration.underline,
+                                  color: Colors.green.shade700,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             )
-                          ])),
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -170,7 +212,9 @@ class VerifyOTPView extends StatelessWidget {
         );
       },
       listener: (BuildContext context, VerifyOTPState state) {
-        Navigator.pushNamed(context, AppConstant.home);
+        if (state is VerifyOTPCompleteState) {
+          Navigator.pushNamed(context, AppConstant.home);
+        }
       },
     );
   }

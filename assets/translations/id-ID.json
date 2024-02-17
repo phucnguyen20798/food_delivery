@@ -39,5 +39,6 @@
         "desc": "Kami mengirimkan kode verifikasi 6 digit ke nomor telepon "
     },
     "resend_otp": "Kirim ulang OTP",
-    "didnot_receive_otp": "Anda tidak menerima OTP? "
+    "didnot_receive_otp": "Anda tidak menerima OTP? ",
+    "resend": "Kirim ulang nanti "
 }

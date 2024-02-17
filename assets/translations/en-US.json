@@ -39,5 +39,6 @@
         "desc": "We sent a 6-digit verification code to the phone number "
     },
     "resend_otp": "Resend OTP",
-    "didnot_receive_otp": "You didn't receive OTP?"
+    "didnot_receive_otp": "You didn't receive OTP? ",
+    "resend": "Resend later "
 }

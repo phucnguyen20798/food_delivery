@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_delivery/business_logic/events/verify_otp_event.dart';
 import 'package:food_delivery/business_logic/states/verify_otp_state.dart';
@@ -12,26 +14,45 @@ class VerifyOTPBloc extends Bloc<VerifyOTPEvent, VerifyOTPState> {
     on(_onInit);
     on(_onResendOTP);
     on(_onVerifyComplete);
+    on(_onStartTimeCountDown);
+    on(_onEndTimeCountDown);
   }
 
   void _onInit(InitVerifyOTPEvent event, Emitter<VerifyOTPState> emitter) {
-    repository.verifyPhoneNumberWithOTP(
-        phone: TextUtils.getPhoneNumber(event.phone),
-        verificationCompleted: (authCredential) {
-          emitter(InitVerifyOTPState(authCredential.smsCode));
-        },
-        onFailure: (error) {},
-        codeSent: (verificationID, resendToken) {},
-        codeAutoRetrievalTimeout: (timeOut) {});
+    _sendOTP(event.phone, () => null);
+    log('OTP Sent');
   }
 
   void _onResendOTP(ResendOTPEvent event, Emitter<VerifyOTPState> emitter) {
-    add(InitVerifyOTPEvent(event.phone));
+    add(StartTimeCountDownEvent());
+    log('OTP Resend');
+    _sendOTP(event.phone, () {});
   }
 
   void _onVerifyComplete(
       VerifyOTPCompletedEvent event, Emitter<VerifyOTPState> emitter) {
     print(event.pin);
     emitter(VerifyOTPCompleteState());
+  }
+
+  void _onStartTimeCountDown(
+      StartTimeCountDownEvent event, Emitter<VerifyOTPState> emitter) {
+    emitter(StartTimeCountDownState());
+  }
+
+  void _onEndTimeCountDown(
+      EndTimeCountDownEvent event, Emitter<VerifyOTPState> emitter) {
+    emitter(EndTimeCountDownState());
+  }
+
+  void _sendOTP(String phone, Function() onVerify) {
+    repository.verifyPhoneNumberWithOTP(
+        phone: TextUtils.getPhoneNumber(phone),
+        verificationCompleted: (authCredential) {
+          onVerify();
+        },
+        onFailure: (error) {},
+        codeSent: (verificationID, resendToken) {},
+        codeAutoRetrievalTimeout: (timeOut) {});
   }
 }

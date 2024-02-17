@@ -17,3 +17,7 @@ class InitVerifyOTPState extends VerifyOTPState {
 }
 
 class VerifyOTPCompleteState extends VerifyOTPState {}
+
+class StartTimeCountDownState extends VerifyOTPState {}
+
+class EndTimeCountDownState extends VerifyOTPState {}

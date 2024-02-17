@@ -17,3 +17,7 @@ class VerifyOTPCompletedEvent extends VerifyOTPEvent {
 
   VerifyOTPCompletedEvent(this.pin);
 }
+
+class StartTimeCountDownEvent extends VerifyOTPEvent {}
+
+class EndTimeCountDownEvent extends VerifyOTPEvent {}
