@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class ItemStore extends StatelessWidget {
-  const ItemStore({super.key});
+class ItemRestaurant extends StatelessWidget {
+  const ItemRestaurant({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -40,28 +40,20 @@ class ItemStore extends StatelessWidget {
                       fontSize: 12.0, overflow: TextOverflow.ellipsis),
                 ),
                 const SizedBox(height: 4.0),
-                const Text(
-                  'QUÁN ĂN',
-                  style: TextStyle(
-                    fontSize: 14.0,
-                    color: Colors.grey,
-                  ),
-                ),
-                const SizedBox(height: 4.0),
-                Row( 
+                Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     const Text(
                       '09:00 - 22:00',
                       style: TextStyle(
-                        fontSize: 16.0,
-                        color: Colors.black,
+                        fontSize: 12.0,
+                        color: Colors.grey,
                       ),
                     ),
                     Container(
                       width: 6.0,
                       height: 6.0,
-                      margin: const EdgeInsets.symmetric(horizontal: 12.0),
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: Colors.grey.shade300,
@@ -70,8 +62,8 @@ class ItemStore extends StatelessWidget {
                     const Text(
                       '20.000 - 275.000',
                       style: TextStyle(
-                        fontSize: 16.0,
-                        color: Colors.black,
+                        fontSize: 12.0,
+                        color: Colors.grey,
                       ),
                     ),
                   ],

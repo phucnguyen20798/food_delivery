@@ -7,9 +7,9 @@ import 'package:food_delivery/presentation/screens/signUp/signUp_screen.dart';
 class AppRouter {
   Route onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
-      case '/home':
-        return MaterialPageRoute(builder: (_) => const HomeScreen());
       case '/':
+        return MaterialPageRoute(builder: (_) => const HomeScreen());
+      case '/auth':
         return MaterialPageRoute(builder: (_) => const AuthScreen());
       case '/sign_in':
         return MaterialPageRoute(builder: (_) => const SignInScreen());
