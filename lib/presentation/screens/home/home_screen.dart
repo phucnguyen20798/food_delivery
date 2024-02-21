@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/presentation/widgets/components/hotel_view.dart';
 import 'package:food_delivery/presentation/widgets/components/restaurant_list.dart';
 import 'package:food_delivery/presentation/widgets/components/suggestion_view.dart';
 
@@ -60,7 +61,7 @@ class HomeScreen extends StatelessWidget {
                 SuggestionView(),
                 RestaurantList(),
                 KaraList(),
-                SizedBox(),
+                HotelView(),
               ])),
     );
   }
