@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery/presentation/screens/home/home_screen.dart';
 import 'package:food_delivery/presentation/screens/profile/profile_screen.dart';
 
+import '../order/order_screen.dart';
+
 class ContainerScreen extends StatefulWidget {
   const ContainerScreen({super.key});
 
@@ -22,6 +24,7 @@ class _ContainerScreenState extends State<ContainerScreen> {
         physics: const NeverScrollableScrollPhysics(),
         children: const [
           HomeScreen(),
+          OrderScreen(),
           ProfileScreen(),
         ],
       ),

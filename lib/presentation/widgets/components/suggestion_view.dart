@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/presentation/widgets/items/item_favorite.dart';
+
 import '../items/item_suggestion.dart';
 
 class SuggestionView extends StatelessWidget {
@@ -6,47 +8,50 @@ class SuggestionView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
+    return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+            padding:
+                const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
             child: Text(
-              'Ở gần bạn',
+              'Có thể bạn sẽ thích',
               style: TextStyle(
                 fontSize: 18.0,
-                color: Colors.black,
+                color: Colors.green.shade700,
                 fontWeight: FontWeight.bold,
               ),
             ),
           ),
-          ItemSuggestion(),
+          SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              padding: const EdgeInsets.only(bottom: 12.0),
+              child: Row(
+                children: List.generate(30, (index) => const ItemSuggestion())
+                    .toList(),
+              )),
+          Divider(thickness: 12.0, color: Colors.grey.shade100),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+            padding:
+                const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
             child: Text(
-              'Được yêu thích nhất',
+              'Những quán ăn được vote nhiều nhất',
               style: TextStyle(
                 fontSize: 18.0,
-                color: Colors.black,
+                color: Colors.green.shade700,
                 fontWeight: FontWeight.bold,
               ),
             ),
           ),
-          ItemSuggestion(),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
-            child: Text(
-              'Top 10 quán ăn ngon nhất Vinh',
-              style: TextStyle(
-                fontSize: 18.0,
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-          ItemSuggestion(),
+          SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              padding: const EdgeInsets.only(bottom: 12.0),
+              child: Row(
+                children:
+                    List.generate(20, (index) => const ItemFavorite()).toList(),
+              )),
         ],
       ),
     );
