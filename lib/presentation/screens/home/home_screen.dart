@@ -11,7 +11,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 4,
+      length: 3,
       child: Scaffold(
           backgroundColor: Colors.white,
           appBar: AppBar(
@@ -49,15 +49,15 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             bottom: const TabBar(
-                isScrollable: true,
+                isScrollable: false,
                 indicatorColor: Colors.white,
                 indicatorPadding: EdgeInsets.only(bottom: 8.0),
-                indicatorSize: TabBarIndicatorSize.label,
+                indicatorSize: TabBarIndicatorSize.tab,
                 tabs: [
                   Tab(text: 'Gợi ý'),
                   Tab(text: 'Quán ăn'),
                   Tab(text: 'Karaoke'),
-                  Tab(text: 'Khách sạn'),
+                  //Tab(text: 'Khách sạn'),
                 ]),
           ),
           body: const TabBarView(
@@ -66,21 +66,21 @@ class HomeScreen extends StatelessWidget {
                 SuggestionView(),
                 RestaurantList(),
                 KaraList(),
-                HotelView(),
+                // HotelView(),
               ])),
     );
   }
 }
 
 class RestaurantDelegate extends SearchDelegate {
+  
   @override
   ThemeData appBarTheme(BuildContext context) {
     return ThemeData(
-      appBarTheme: const AppBarTheme(elevation: 0.0),
-      inputDecorationTheme: InputDecorationTheme(
-        border: InputBorder.none,
-      )
-    );
+        appBarTheme: const AppBarTheme(elevation: 0.0),
+        inputDecorationTheme: InputDecorationTheme(
+          border: InputBorder.none,
+        ));
   }
 
   @override

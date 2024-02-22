@@ -1,10 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/presentation/utils/text_utils.dart';
 
 class OrderScreen extends StatelessWidget {
   const OrderScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        elevation: 0.0,
+        backgroundColor: Colors.white,
+        title: const Text(
+          'Đơn hàng của bạn',
+          style: TextStyle(
+            fontSize: 18.0,
+            color: Colors.black,
+          ),
+        ),
+      ),
+      body: Column(
+        children: [Text(TextUtils.formatMoney(3000000))],
+      ),
+    );
   }
 }
