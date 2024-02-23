@@ -11,7 +11,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 3,
+      length: 4,
       child: Scaffold(
           backgroundColor: Colors.white,
           appBar: AppBar(
@@ -57,7 +57,7 @@ class HomeScreen extends StatelessWidget {
                   Tab(text: 'Gợi ý'),
                   Tab(text: 'Quán ăn'),
                   Tab(text: 'Karaoke'),
-                  //Tab(text: 'Khách sạn'),
+                  Tab(text: 'Khách sạn'),
                 ]),
           ),
           body: const TabBarView(
@@ -66,14 +66,13 @@ class HomeScreen extends StatelessWidget {
                 SuggestionView(),
                 RestaurantList(),
                 KaraList(),
-                // HotelView(),
+                HotelView(),
               ])),
     );
   }
 }
 
 class RestaurantDelegate extends SearchDelegate {
-  
   @override
   ThemeData appBarTheme(BuildContext context) {
     return ThemeData(

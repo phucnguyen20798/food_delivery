@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery/presentation/utils/text_utils.dart';
 
 class OrderScreen extends StatelessWidget {
   const OrderScreen({super.key});
@@ -18,9 +17,20 @@ class OrderScreen extends StatelessWidget {
             color: Colors.black,
           ),
         ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.search,
+              color: Colors.black,
+            ),
+          )
+        ],
       ),
-      body: Column(
-        children: [Text(TextUtils.formatMoney(3000000))],
+      body: const Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [],
       ),
     );
   }
