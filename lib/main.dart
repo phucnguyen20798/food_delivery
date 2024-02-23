@@ -1,17 +1,13 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:food_delivery/di.dart';
 
 import 'app.dart';
-
-final getIt = GetIt.instance;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
-  getIt.registerSingleton<SharedPreferences>(
-      await SharedPreferences.getInstance());
+  await DependencyInjection.setUp();
   runApp(EasyLocalization(
       path: 'assets/translations',
       startLocale: const Locale('vi', 'VN'),
