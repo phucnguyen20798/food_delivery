@@ -3,6 +3,8 @@ import 'package:food_delivery/di.dart';
 import 'package:food_delivery/presentation/constants/app_constant.dart';
 import 'package:food_delivery/presentation/screens/auth/auth_screen.dart';
 import 'package:food_delivery/presentation/screens/home/home_screen.dart';
+import 'package:food_delivery/presentation/screens/order/order_screen.dart';
+import 'package:food_delivery/presentation/screens/profile/profile_screen.dart';
 import 'package:food_delivery/presentation/screens/input_infor/input_infor_screen.dart';
 import 'package:food_delivery/presentation/screens/signIn/signIn_screen.dart';
 import 'package:food_delivery/presentation/screens/signUp/signUp_screen.dart';
@@ -21,6 +23,10 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const AuthScreen());
       case AppConstant.signIn:
         return MaterialPageRoute(builder: (_) => const SignInScreen());
+      case AppConstant.profile:
+        return MaterialPageRoute(builder: (_) => const ProfileScreen());
+      case AppConstant.order:
+        return MaterialPageRoute(builder: (_) => const OrderScreen());
       case AppConstant.signUp:
         return MaterialPageRoute(builder: (_) => const SignUpScreen());
       case AppConstant.verifyOTP:
@@ -30,7 +36,7 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const InputInforScreen());
       case AppConstant.init:
         final phoneNumber = prefs.getString(AppConstant.phone);
-        if(phoneNumber != null) {
+        if (phoneNumber != null) {
           return MaterialPageRoute(builder: (_) => const HomeScreen());
         }
         return MaterialPageRoute(builder: (_) => const WelcomeScreen());

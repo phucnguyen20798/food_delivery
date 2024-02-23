@@ -2,9 +2,9 @@ import 'package:food_delivery/data/models/time.dart';
 
 import 'menu.dart';
 
-class Store {
-  final String idStore;
-  final String nameStore;
+class Restaurant {
+  final String idRes;
+  final String nameRes;
   final String address;
   final String logo;
   final List<String> categories;
@@ -13,9 +13,9 @@ class Store {
   //Thời gian mở/đóng cửa hàng
   final Time time;
 
-  Store(
-    this.idStore,
-    this.nameStore,
+  Restaurant(
+    this.idRes,
+    this.nameRes,
     this.address,
     this.logo,
     this.categories,
@@ -23,4 +23,5 @@ class Store {
     this.createDateTime,
     this.time,
   );
+  
 }

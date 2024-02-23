@@ -4,8 +4,6 @@ class AppConstant {
   static String storageUrl = 'gs://food-delivery-14022024.appspot.com';
   static const String phone = 'phone';
 
-  // static const String init = '/init';
-  // static const String home = '/';
   static const String init = '/';
   static const String home = '/home';
   static const String signIn = '/sign_in';
@@ -13,4 +11,6 @@ class AppConstant {
   static const String verifyOTP = '/verify_otp';
   static const String inputInfor = '/input_infor';
   static const String welcome = '/welcome';
+  static const String profile = '/profile';
+  static const String order = '/order';
 }

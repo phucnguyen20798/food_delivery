@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class TextUtils {
   static String prefixPhoneNumberVN =
@@ -43,6 +44,12 @@ class TextUtils {
       default:
         return 'Tiếng Việt';
     }
+  }
+
+  static String formatMoney(double price) {
+    NumberFormat formatter =
+        NumberFormat.currency(locale: 'vi_VN', symbol: 'VND');
+    return formatter.format(price);
   }
 
   static String? validatePhoneNumber(String phone) {
