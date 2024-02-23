@@ -137,7 +137,7 @@ class VerifyOTPView extends StatelessWidget {
                     onCompleted: (pin) {
                       context
                           .read<VerifyOTPBloc>()
-                          .add(VerifyOTPCompletedEvent(pin));
+                          .add(VerifyOTPCompletedEvent(phoneNumber, pin));
                     },
                     length: 6,
                   ),

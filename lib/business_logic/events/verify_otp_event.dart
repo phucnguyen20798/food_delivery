@@ -13,9 +13,10 @@ class ResendOTPEvent extends VerifyOTPEvent {
 }
 
 class VerifyOTPCompletedEvent extends VerifyOTPEvent {
+  final String phone;
   final String pin;
 
-  VerifyOTPCompletedEvent(this.pin);
+  VerifyOTPCompletedEvent(this.phone, this.pin);
 }
 
 class StartTimeCountDownEvent extends VerifyOTPEvent {}

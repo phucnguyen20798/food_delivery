@@ -82,6 +82,7 @@ flutter:
   assets:
     - assets/images/food-delivery.jpg
     - assets/images/share-voucher.jpg
+    - assets/images/logo_app.png
     - assets/translations/en-US.json
     - assets/translations/vi-VN.json
     - assets/translations/id-ID.json
