@@ -5,11 +5,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_delivery/business_logic/blocs/auth_bloc.dart';
 import 'package:food_delivery/business_logic/events/auth_event.dart';
 import 'package:food_delivery/business_logic/states/auth_state.dart';
+import 'package:food_delivery/presentation/constants/app_constant.dart';
 import 'package:food_delivery/presentation/utils/app_utils.dart';
 import 'package:food_delivery/presentation/widgets/components/general_button.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../data/models/slide.dart';
+import '../../constants/app_color.dart';
 import '../../widgets/components/change_language.dart';
 
 class AuthView extends StatefulWidget {
@@ -20,7 +22,6 @@ class AuthView extends StatefulWidget {
 }
 
 class _AuthViewState extends State<AuthView> {
-
   PageController pageController = PageController();
   String? languageTitle;
   List<Slide> slideList = [];
@@ -46,7 +47,7 @@ class _AuthViewState extends State<AuthView> {
             'Food Delivery'.toUpperCase(),
             style: TextStyle(
               fontSize: 18.0,
-              color: Colors.green.shade700,
+              color: AppColor.primaryColor,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -101,17 +102,17 @@ class _AuthViewState extends State<AuthView> {
                     dotColor: Colors.grey.shade300,
                     dotHeight: 8.0,
                     dotWidth: 8.0,
-                    activeDotColor: Colors.green.shade700,
+                    activeDotColor: AppColor.primaryColor,
                   ), // your preferred effect
                   onDotClicked: (index) {}),
               const SizedBox(height: 24.0),
               GeneralButton(
                   content: 'sign_in'.tr(),
-                  backgroundColor: Colors.green.shade700,
+                  backgroundColor: AppColor.primaryColor,
                   textColor: Colors.white,
                   onClick: () async {
                     final language =
-                        await Navigator.pushNamed(context, '/sign_in')
+                        await Navigator.pushNamed(context, AppConstant.signIn)
                             as String?;
                     if (language != null) {
                       // ignore: use_build_context_synchronously
@@ -123,11 +124,11 @@ class _AuthViewState extends State<AuthView> {
               const SizedBox(height: 12.0),
               GeneralButton(
                   content: 'sign_up'.tr(),
-                  backgroundColor: Colors.white,
-                  textColor: Colors.green.shade700,
+                  backgroundColor: AppColor.backgroundColor,
+                  textColor: AppColor.primaryColor,
                   isOutlineBorder: true,
                   onClick: () {
-                    Navigator.pushNamed(context, '/sign_up');
+                    Navigator.pushNamed(context, AppConstant.signUp);
                   }),
               const SizedBox(height: 16.0),
               RichText(

@@ -7,3 +7,15 @@ class ChangeLanguageEvent extends SignInEvent {
 
   ChangeLanguageEvent(this.locale);
 }
+
+class ValidatePhoneNumberEvent extends SignInEvent {
+  String phone;
+
+  ValidatePhoneNumberEvent(this.phone);
+}
+
+class ValidatePhoneNumberFailureEvent extends SignInEvent {
+  String message;
+
+  ValidatePhoneNumberFailureEvent(this.message);
+}

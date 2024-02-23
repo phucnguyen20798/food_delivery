@@ -5,6 +5,11 @@ import 'package:food_delivery/presentation/widgets/components/suggestion_view.da
 
 import '../../widgets/components/kara_list.dart';
 
+import 'package:food_delivery/presentation/widgets/components/search_bar.dart'
+    as searchBar;
+
+import '../../widgets/components/search_bar.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -17,37 +22,13 @@ class HomeScreen extends StatelessWidget {
           appBar: AppBar(
             titleSpacing: 16.0,
             backgroundColor: Colors.green.shade700,
+            automaticallyImplyLeading: false,
             elevation: 0.0,
             title: InkWell(
-              onTap: () {
-                showSearch(context: context, delegate: RestaurantDelegate());
-              },
-              child: Container(
-                width: double.infinity,
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 16.0, vertical: 14.0),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(4.0),
-                ),
-                child: const Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(
-                      Icons.search,
-                      size: 18.0,
-                      color: Colors.grey,
-                    ),
-                    SizedBox(width: 8.0),
-                    Text(
-                      'Tìm kiếm quán ăn, nhà hàng,...',
-                      style: TextStyle(fontSize: 14.0, color: Colors.grey),
-                    ),
-                  ],
-                ),
-              ),
-            ),
+                onTap: () {
+                  showSearch(context: context, delegate: RestaurantDelegate());
+                },
+                child: const searchBar.SearchBar()),
             bottom: const TabBar(
                 isScrollable: false,
                 indicatorColor: Colors.white,
@@ -68,50 +49,6 @@ class HomeScreen extends StatelessWidget {
                 KaraList(),
                 HotelView(),
               ])),
-    );
-  }
-}
-
-class RestaurantDelegate extends SearchDelegate {
-  @override
-  ThemeData appBarTheme(BuildContext context) {
-    return ThemeData(
-        appBarTheme: const AppBarTheme(elevation: 0.0),
-        inputDecorationTheme: InputDecorationTheme(
-          border: InputBorder.none,
-        ));
-  }
-
-  @override
-  List<Widget>? buildActions(BuildContext context) {
-    return [
-      IconButton(
-        onPressed: () {},
-        icon: const Icon(Icons.close),
-      ),
-    ];
-  }
-
-  @override
-  Widget? buildLeading(BuildContext context) {
-    return IconButton(
-        onPressed: () {
-          Navigator.pop(context);
-        },
-        icon: const Icon(Icons.arrow_back));
-  }
-
-  @override
-  Widget buildResults(BuildContext context) {
-    return Column(
-      children: [],
-    );
-  }
-
-  @override
-  Widget buildSuggestions(BuildContext context) {
-    return Column(
-      children: [],
     );
   }
 }

@@ -33,5 +33,12 @@
     "share_voucher": {
         "title": "Bagikan kode promosi dengan teman",
         "desc": "Dengan teman, Anda dapat dengan mudah berbagi kode promosi satu sama lain untuk menikmati kesenangan bersama."
-    }
+    },
+    "verify_otp": {
+        "title": "Verifikasi OTP",
+        "desc": "Kami mengirimkan kode verifikasi 6 digit ke nomor telepon "
+    },
+    "resend_otp": "Kirim ulang OTP",
+    "didnot_receive_otp": "Anda tidak menerima OTP? ",
+    "resend": "Kirim ulang nanti "
 }
