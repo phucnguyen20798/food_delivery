@@ -5,7 +5,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/foundation.dart';
 import 'package:food_delivery/data/models/account.dart';
+import 'package:food_delivery/data/models/detail_restaurant.dart';
 import 'package:food_delivery/presentation/constants/app_constant.dart';
+
+import '../models/food.dart';
+import '../models/vote_restaurant.dart';
 
 class FoodDeliveryAPI {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
@@ -66,5 +70,25 @@ class FoodDeliveryAPI {
         await _dbRef.child('accounts').child(idAccount).get();
     final dataValue = jsonDecode(jsonEncode(dataSnapshot.value));
     return Account.fromJson(dataValue);
+  }
+
+  Future<List<Food>> getBestFavoriteFoodInRestaurant() async {
+    List<Food> bestFavoriteFoodList = [];
+    DataSnapshot dataSnapshot = await _dbRef.child('detailRestaurants').get();
+    for (var snapshot in dataSnapshot.children) {
+      DetailRestaurant dataValue =
+          DetailRestaurant.fromJson(jsonDecode(jsonEncode(snapshot.value)));
+      bestFavoriteFoodList.add(dataValue.getBestFavoriteFood());
+    }
+    return bestFavoriteFoodList;
+  }
+
+  Future<List<VoteRestaurant>> getBestVoteRestaurants() async {
+    List<VoteRestaurant> bestVoteRestaurants = [];
+    DataSnapshot dataSnapshot = await _dbRef.child('bestVoteRestaurants').get();
+    VoteRestaurant voteRestaurant =
+        VoteRestaurant.fromJson(jsonDecode(jsonEncode(dataSnapshot.value)));
+    bestVoteRestaurants.add(voteRestaurant);
+    return bestVoteRestaurants;
   }
 }

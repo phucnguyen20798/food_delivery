@@ -1,3 +1,9 @@
+import 'package:food_delivery/data/models/restaurant.dart';
+import 'package:json_annotation/json_annotation.dart';
+
+part 'food.g.dart';
+
+@JsonSerializable()
 class Food {
   final String id;
   final String name;
@@ -7,6 +13,7 @@ class Food {
   final String image;
   final double vote;
   final double? discount;
+  final Restaurant restaurant;
 
   Food(
     this.id,
@@ -17,5 +24,10 @@ class Food {
     this.image,
     this.vote,
     this.discount,
+    this.restaurant,
   );
+
+  factory Food.fromJson(Map<String, dynamic> json) => _$FoodFromJson(json);
+
+  Map<String, dynamic> toJson() => _$FoodToJson(this);
 }
