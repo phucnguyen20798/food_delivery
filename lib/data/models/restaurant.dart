@@ -1,27 +1,27 @@
-import 'package:food_delivery/data/models/time.dart';
+import 'package:json_annotation/json_annotation.dart';
 
-import 'menu.dart';
+import 'location.dart';
 
+part 'restaurant.g.dart';
+
+@JsonSerializable()
 class Restaurant {
-  final String idRes;
-  final String nameRes;
-  final String address;
+  final String id;
+  final String name;
   final String logo;
   final List<String> categories;
-  final Menu menu;
-  final DateTime createDateTime;
-  //Thời gian mở/đóng cửa hàng
-  final Time time;
+  final Location location;
 
   Restaurant(
-    this.idRes,
-    this.nameRes,
-    this.address,
+    this.id,
+    this.name,
     this.logo,
     this.categories,
-    this.menu,
-    this.createDateTime,
-    this.time,
+    this.location,
   );
-  
+
+  factory Restaurant.fromJson(Map<String, dynamic> json) =>
+      _$RestaurantFromJson(json);
+
+  Map<String, dynamic> toJson() => _$RestaurantToJson(this);
 }

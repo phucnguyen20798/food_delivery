@@ -13,4 +13,6 @@ class AppConstant {
   static const String welcome = '/welcome';
   static const String profile = '/profile';
   static const String order = '/order';
+  static const String internetState = '/internet_state';
+  static const String detailRestaurant = '/detail_restaurant';
 }

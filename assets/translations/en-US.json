@@ -40,5 +40,12 @@
     },
     "resend_otp": "Resend OTP",
     "didnot_receive_otp": "You didn't receive OTP? ",
-    "resend": "Resend later "
+    "resend": "Resend later ",
+    "suggest": "Suggest",
+    "restaurant": "Restaurant",
+    "karaoke": "Karaoke",
+    "hotel": "Hotel",
+    "hint_search": "Search for eateries, restaurants,...",
+    "maybe_like_you": "Maybe you will like it",
+    "most_votes_restaurants": "The restaurants with the most votes"
 }

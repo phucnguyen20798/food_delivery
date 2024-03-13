@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class SearchBar extends StatelessWidget {
@@ -12,19 +13,19 @@ class SearchBar extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(4.0),
       ),
-      child: const Row(
+      child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(
+          const Icon(
             Icons.search,
             size: 18.0,
             color: Colors.grey,
           ),
-          SizedBox(width: 8.0),
+          const SizedBox(width: 8.0),
           Text(
-            'Tìm kiếm quán ăn, nhà hàng,...',
-            style: TextStyle(fontSize: 14.0, color: Colors.grey),
+            'hint_search'.tr(),
+            style: const TextStyle(fontSize: 14.0, color: Colors.grey),
           ),
         ],
       ),

@@ -40,5 +40,12 @@
     },
     "resend_otp": "Kirim ulang OTP",
     "didnot_receive_otp": "Anda tidak menerima OTP? ",
-    "resend": "Kirim ulang nanti "
+    "resend": "Kirim ulang nanti ",
+    "suggest": "Menyarankan",
+    "restaurant": "Restoran",
+    "karaoke": "Karaoke",
+    "hotel": "Hotel",
+    "hint_search": "Telusuri tempat makan, restoran,...",
+    "maybe_like_you": "Mungkin Anda akan menyukainya",
+    "most_votes_restaurants": "Restoran dengan suara terbanyak"
 }
