@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_delivery/business_logic/blocs/home_bloc.dart';
 import 'package:food_delivery/business_logic/states/home_state.dart';
 import 'package:food_delivery/data/models/food.dart';
+import 'package:food_delivery/presentation/constants/app_constant.dart';
 import 'package:food_delivery/presentation/widgets/components/loading_data.dart';
 import 'package:food_delivery/presentation/widgets/items/item_favorite.dart';
 
@@ -32,7 +34,7 @@ class SuggestionView extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 16.0, vertical: 12.0),
                         child: Text(
-                          'Có thể bạn sẽ thích',
+                          'maybe_like_you'.tr(),
                           style: TextStyle(
                             fontSize: 18.0,
                             color: Colors.green.shade700,
@@ -47,8 +49,14 @@ class SuggestionView extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: List.generate(
                                 suggestionFoodList.length,
-                                (index) => ItemSuggestion(
-                                    food: suggestionFoodList[index])).toList(),
+                                (index) => InkWell(
+                                      onTap: () {
+                                        Navigator.pushNamed(context,
+                                            AppConstant.detailRestaurant);
+                                      },
+                                      child: ItemSuggestion(
+                                          food: suggestionFoodList[index]),
+                                    )).toList(),
                           )),
                     ],
                   ),
@@ -61,7 +69,7 @@ class SuggestionView extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(
                       horizontal: 16.0, vertical: 12.0),
                   child: Text(
-                    'Những quán ăn được vote nhiều nhất',
+                    'most_votes_restaurants'.tr(),
                     style: TextStyle(
                       fontSize: 18.0,
                       color: Colors.green.shade700,

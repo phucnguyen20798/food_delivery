@@ -40,5 +40,12 @@
     },
     "resend_otp": "Gửi lại OTP",
     "didnot_receive_otp": "Bạn không nhận được OTP? ",
-    "resend": "Gửi lại sau "
+    "resend": "Gửi lại sau ",
+    "suggest": "Gợi ý",
+    "restaurant": "Quán ăn",
+    "karaoke": "Karaoke",
+    "hotel": "Khách sạn",
+    "hint_search": "Tìm kiếm quán ăn, nhà hàng,...",
+    "maybe_like_you": "Có thể bạn sẽ thích",
+    "most_votes_restaurants": "Những quán ăn được vote nhiều nhất"
 }

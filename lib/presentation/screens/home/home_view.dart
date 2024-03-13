@@ -1,9 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:food_delivery/presentation/constants/app_constant.dart';
 
 import '../../widgets/components/hotel_view.dart';
 import '../../widgets/components/kara_list.dart';
 import '../../widgets/components/restaurant_list.dart';
+import '../../widgets/components/search_bar.dart';
 import '../../widgets/components/suggestion_view.dart';
 
 import 'package:food_delivery/presentation/widgets/components/search_bar.dart'
@@ -25,20 +26,19 @@ class HomeView extends StatelessWidget {
             elevation: 0.0,
             title: InkWell(
                 onTap: () {
-                  //showSearch(context: context, delegate: RestaurantDelegate());
-                  Navigator.pushNamed(context, AppConstant.detailRestaurant);
+                  showSearch(context: context, delegate: RestaurantDelegate());
                 },
                 child: const searchBar.SearchBar()),
-            bottom: const TabBar(
+            bottom: TabBar(
                 isScrollable: false,
                 indicatorColor: Colors.white,
-                indicatorPadding: EdgeInsets.only(bottom: 8.0),
+                indicatorPadding: const EdgeInsets.only(bottom: 8.0),
                 indicatorSize: TabBarIndicatorSize.tab,
                 tabs: [
-                  Tab(text: 'Gợi ý'),
-                  Tab(text: 'Quán ăn'),
-                  Tab(text: 'Karaoke'),
-                  Tab(text: 'Khách sạn'),
+                  Tab(text: 'suggest'.tr()),
+                  Tab(text: 'restaurant'.tr()),
+                  Tab(text: 'karaoke'.tr()),
+                  Tab(text: 'hotel'.tr()),
                 ]),
           ),
           body: const TabBarView(
